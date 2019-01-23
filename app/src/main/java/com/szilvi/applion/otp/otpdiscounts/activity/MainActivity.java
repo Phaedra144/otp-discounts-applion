@@ -1,4 +1,4 @@
-package com.szilvi.applion.otp.otpdiscounts.activities;
+package com.szilvi.applion.otp.otpdiscounts.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
