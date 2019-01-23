@@ -25,26 +25,26 @@ public class DetailedActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         Offer offer = (Offer) bundle.getSerializable("movie");
         List<String> shops = new ArrayList<>();
-        try {
-            shops = offer.getShops();
-        } catch (NullPointerException ex) {
-            ex.printStackTrace();
-        }
 
         TextView partner = findViewById(R.id.partnerTextView2);
         TextView endTime = findViewById(R.id.endTimeTextView2);
         TextView title = findViewById(R.id.titleTexView2);
         TextView subTitle = findViewById(R.id.subTitleTextView);
+        try {
+            shops = offer.getShops();
+            partner.setText(offer.getPartnerName());
+            endTime.setText(offer.getEndTime());
+            title.setText(offer.getTitle());
+            subTitle.setText(offer.getSubTitle());
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
         ImageView logo = findViewById(R.id.logoImage2);
         ListView listView = findViewById(R.id.shopsListView);
 
-        partner.setText(offer.getPartnerName());
-        endTime.setText(offer.getEndTime());
-        title.setText(offer.getTitle());
-        subTitle.setText(offer.getSubTitle());
 
         logo.setImageBitmap(null);
-        Picasso.get().load(offer.getLogoUrl()).placeholder(R.drawable.otplogo).into(logo);
+        Picasso.get().load(offer.getLogoUrl()).placeholder(R.drawable.otpbanklogo480).into(logo);
 
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shops);
