@@ -4,4 +4,5 @@
     <string name="end_time">End time</string>
     <string name="title">Title</string>
     <string name="partner">Partner</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAYwaTtgSRUAs8WCGwfFp0BxTIiwx79rfc</string>
 </resources>
