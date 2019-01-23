@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 import com.szilvi.applion.otp.otpdiscounts.R;
 import com.szilvi.applion.otp.otpdiscounts.model.Offer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailedActivity extends AppCompatActivity {
@@ -23,7 +24,12 @@ public class DetailedActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         Offer offer = (Offer) bundle.getSerializable("movie");
-        List<String> shops = offer.getShops();
+        List<String> shops = new ArrayList<>();
+        try {
+            shops = offer.getShops();
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
 
         TextView partner = findViewById(R.id.partnerTextView2);
         TextView endTime = findViewById(R.id.endTimeTextView2);
@@ -38,13 +44,11 @@ public class DetailedActivity extends AppCompatActivity {
         subTitle.setText(offer.getSubTitle());
 
         logo.setImageBitmap(null);
-        Picasso.get().load(offer.getLogoUrl()).fit().into(logo);
+        Picasso.get().load(offer.getLogoUrl()).placeholder(R.drawable.otplogo).into(logo);
 
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shops);
         listView.setAdapter(itemsAdapter);
-
-
     }
 
 
