@@ -2,7 +2,6 @@ package com.szilvi.applion.otp.otpdiscounts.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import com.szilvi.applion.otp.otpdiscounts.R;
 import com.szilvi.applion.otp.otpdiscounts.activity.DetailedActivity;
 import com.szilvi.applion.otp.otpdiscounts.model.Offer;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +77,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersAdep
 
     private void getImages(OffersAdepterViewHolder holder, Offer offer) {
         holder.logo.setImageBitmap(null);
-        Picasso.get().load(offer.getLogoUrl()).placeholder(R.drawable.otpbanklogo480).into(holder.logo);
+        Picasso.get().load(offer.getLogoUrl()).placeholder(R.drawable.otpbanklogo480).resize(50, 50).centerCrop().into(holder.logo);
     }
 }
