@@ -2,6 +2,7 @@ package com.szilvi.applion.otp.otpdiscounts.model;
 
 import java.time.LocalDateTime;
 
+@Getter
 public class Offer {
 
     int id;
