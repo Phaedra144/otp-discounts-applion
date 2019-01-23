@@ -79,7 +79,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersAdep
 
     private void getImages(OffersAdepterViewHolder holder, Offer offer) {
         holder.logo.setImageBitmap(null);
-        Picasso.get().cancelRequest(holder.logo);
         Picasso.get().load(offer.getLogoUrl()).fit().into(holder.logo);
     }
 }
