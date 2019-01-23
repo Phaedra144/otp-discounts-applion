@@ -2,9 +2,12 @@ package com.szilvi.applion.otp.otpdiscounts.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.szilvi.applion.otp.otpdiscounts.R;
+import com.szilvi.applion.otp.otpdiscounts.adapter.OffersAdapter;
 import com.szilvi.applion.otp.otpdiscounts.model.Offer;
 import com.szilvi.applion.otp.otpdiscounts.network.DiscountsApi;
 import com.szilvi.applion.otp.otpdiscounts.network.RetrofitClient;
@@ -19,16 +22,14 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    final TextView hello = findViewById(R.id.hello);
-    ArrayList<Offer> offers;
+    TextView partner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        partner = findViewById(R.id.partnerTextView);
         requestOffers();
-
     }
 
     private void requestOffers() {
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<OfferResponse>() {
             @Override
             public void onResponse(Call<OfferResponse> call, Response<OfferResponse> response) {
-                hello.setText(response.body().getOfferList().get(0).getDescription());
+                ArrayList<Offer> offers = (ArrayList<Offer>) response.body().getOfferList();
+                initRecycleView(offers);
             }
 
             @Override
@@ -47,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//        public void initRecycleView() {
-//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//        recyclerView.setAdapter(new RiverSectionAdapter(riverSections, RiverSectionActivity.this));
-//        recyclerView.setLayoutManager(new LinearLayoutManager(RiverSectionActivity.this));
-//    }
+        public void initRecycleView(ArrayList<Offer> offers) {
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(new OffersAdapter(offers, MainActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+    }
 }
