@@ -15,12 +15,11 @@
         android:layout_width="match_parent"
         android:padding="5dp">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="215dp"
+        <android.support.v7.widget.GridLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingStart="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp">
+            card_view:rowCount="8"
+            card_view:columnCount="1">
 
             <TextView
                 android:id="@+id/partnerTextView"
@@ -29,16 +28,22 @@
                 android:text="@string/partner"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
+                card_view:layout_column="0"
+                card_view:layout_gravity="fill"
+                card_view:layout_row="0" />
 
             <TextView
                 android:id="@+id/titleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/title"
-                android:textSize="10sp"
+                android:textSize="12sp"
+                card_view:layout_row="1"
+                card_view:layout_column="0"
+                card_view:layout_gravity="fill"
+                card_view:layout_columnWeight="1"
+                card_view:layout_rowWeight="1"
+                card_view:layout_rowSpan="5"
                 tools:layout_editor_absoluteX="10dp"
                 tools:layout_editor_absoluteY="30dp" />
 
@@ -47,20 +52,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/end_time"
-                android:textSize="10sp"
+                android:textSize="12sp"
+                card_view:layout_row="7"
+                card_view:layout_column="0"
+                card_view:layout_gravity="fill"
+                card_view:layout_columnWeight="1"
+                card_view:layout_rowWeight="1"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="166dp" />
 
-
-        </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.GridLayout>
 
         <ImageView
             android:id="@+id/logoImage"
-            android:contentDescription="@string/logo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1.13" />
+            android:layout_weight="1.13"
+            android:contentDescription="@string/logo" />
 
     </LinearLayout>
 
