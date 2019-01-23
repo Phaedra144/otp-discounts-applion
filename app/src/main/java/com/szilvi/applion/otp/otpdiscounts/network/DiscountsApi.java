@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface DiscountsApi {
 
-    @GET("")
+    @GET(" ")
     Call<OfferResponse> getOffers();
 
 }

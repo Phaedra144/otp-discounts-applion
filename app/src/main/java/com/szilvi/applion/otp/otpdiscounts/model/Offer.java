@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Offer {
 
     int id;
-    LocalDateTime endTime;
+    String endTime;
     String title;
     String subTitle;
     String partnerName;
