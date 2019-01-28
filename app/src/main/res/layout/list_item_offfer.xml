@@ -16,9 +16,10 @@
 
         <TextView
             android:id="@+id/partnerTextView"
-            android:layout_width="160dp"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:text="@string/partner"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -28,35 +29,33 @@
 
         <TextView
             android:id="@+id/titleText"
-            android:layout_width="160dp"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:text="@string/title"
             android:textSize="12sp"
             card_view:layout_column="0"
             card_view:layout_gravity="center"
             card_view:layout_row="1"
-            card_view:layout_rowSpan="5"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="30dp" />
+            card_view:layout_rowSpan="5" />
 
         <TextView
             android:id="@+id/endTme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:layout_margin="15dp"
             android:text="@string/end_time"
             android:textSize="12sp"
             card_view:layout_column="0"
             card_view:layout_gravity="center_vertical"
-            card_view:layout_row="7"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="166dp" />
+            card_view:layout_row="7" />
 
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="0dp"
             android:layout_height="150dp"
+            android:layout_marginTop="15dp"
             android:layout_weight="1.13"
             android:contentDescription="@string/logo"
             card_view:layout_column="1"

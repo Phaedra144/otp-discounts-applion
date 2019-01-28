@@ -1,12 +1,9 @@
 package com.szilvi.applion.otp.otpdiscounts.activity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +13,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.szilvi.applion.otp.otpdiscounts.R;
+import com.szilvi.applion.otp.otpdiscounts.adapter.ShopsAdapter;
 import com.szilvi.applion.otp.otpdiscounts.fragment.MapsFragment;
 import com.szilvi.applion.otp.otpdiscounts.model.Offer;
 
@@ -40,6 +38,7 @@ public class DetailedActivity extends AppCompatActivity implements AdapterView.O
         TextView subTitle = findViewById(R.id.subTitleTextView);
         ImageView logo = findViewById(R.id.logoImage2);
         ListView listView = findViewById(R.id.shopsListView);
+
         try {
             shops = offer.getShops();
             partner.setText(offer.getPartnerName());
@@ -48,15 +47,16 @@ public class DetailedActivity extends AppCompatActivity implements AdapterView.O
             subTitle.setText(offer.getSubTitle());
 
             logo.setImageBitmap(null);
-            Picasso.get().load(offer.getLogoUrl()).resize(50, 50).centerCrop().placeholder(R.drawable.otpbanklogo480).into(logo);
+            Picasso.get().load(offer.getLogoUrl()).resize(100, 100).centerCrop().placeholder(R.drawable.otpbanklogo480).into(logo);
         } catch (NullPointerException ex) {
             ex.printStackTrace();
         }
         if (shops == null) {
             shops = new ArrayList<>();
         }
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shops);
+
+        ShopsAdapter itemsAdapter =
+                new ShopsAdapter(this, 0, (ArrayList<String>) shops);
         listView.setAdapter(itemsAdapter);
 
         listView.setOnItemClickListener(this);
