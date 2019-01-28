@@ -1,6 +1,9 @@
 package com.szilvi.applion.otp.otpdiscounts.model;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -18,7 +21,7 @@ public class Offer implements Serializable {
 
     public Offer(int id, String endTime, String title, String subTitle, String partnerName, String description, String state, String logoUrl, List<String> shops) {
         this.id = id;
-        this.endTime = endTime;
+        this.endTime = convertToNiceDateFormat(endTime);
         this.title = title;
         this.subTitle = subTitle;
         this.partnerName = partnerName;
@@ -26,6 +29,19 @@ public class Offer implements Serializable {
         this.state = state;
         this.logoUrl = logoUrl;
         this.shops = shops;
+    }
+
+    public String convertToNiceDateFormat(String endTime) {
+        System.out.println(endTime);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        Date parsedDate = null;
+        try {
+            parsedDate = simpleDateFormat.parse(endTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        return simpleDateFormat.format(parsedDate);
     }
 
     public Offer() {

@@ -1,7 +1,9 @@
 package com.szilvi.applion.otp.otpdiscounts.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -41,7 +43,7 @@ public class DetailedActivity extends AppCompatActivity implements AdapterView.O
         try {
             shops = offer.getShops();
             partner.setText(offer.getPartnerName());
-            endTime.setText(offer.getEndTime());
+            endTime.setText(offer.convertToNiceDateFormat(offer.getEndTime()));
             title.setText(offer.getTitle());
             subTitle.setText(offer.getSubTitle());
 

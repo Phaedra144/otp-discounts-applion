@@ -46,7 +46,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersAdep
     public void onBindViewHolder(@NonNull OffersAdepterViewHolder viewHolder, int i) {
         viewHolder.partner.setText(offers.get(i).getPartnerName());
         viewHolder.title.setText(offers.get(i).getTitle());
-        viewHolder.endTime.setText(offers.get(i).getEndTime());
+        viewHolder.endTime.setText(offers.get(i).convertToNiceDateFormat(offers.get(i).getEndTime()));
         getImages(viewHolder, offers.get(i));
     }
 
